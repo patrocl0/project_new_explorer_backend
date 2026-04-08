@@ -1,7 +1,14 @@
-logs/
+logs
 *.log
+npm-debug.log*
 
-.env
+# Directorio de dependencias
+node_modules
 
+# Directorio de cache npm opcional
+.npm
 
-node_modules/
+# Archivos de sistema y carpetas de ajustes IDE
+.DS_Store
+.idea
+.vscode
