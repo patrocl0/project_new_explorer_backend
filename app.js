@@ -1,16 +1,20 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
+const { errors } = require("celebrate");
+
 const { login, createUser } = require("./controllers/user");
 const usersRouter = require("./routes/users");
 const articleRouter = require("./routes/articles");
+
 const { requestLogger } = require("./middlewares/requestLogger");
 const { errorLogger } = require("./middlewares/errorLogger");
-const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/errorHandler");
 const auth = require("./middlewares/auth");
+const corsMiddleware = require("./middlewares/cors");
+
 const PORT = process.env.PORT || 3001;
+
 const app = express();
 
 mongoose
@@ -18,26 +22,7 @@ mongoose
   .then(() => console.log("MongoDB conectado"))
   .catch((err) => console.error(err));
 
-// const allowedOrigins = [
-//   "https://patroclo.mooo.com",
-//   "https://www.patroclo.mooo.com",
-//   "http://localhost:5173",
-// ];
-
-app.use(cors());
-
-// // app.use(
-// //   cors({
-// //     origin: (origin, callback) => {
-// //       if (!origin || allowedOrigins.includes(origin)) {
-// //         callback(null, true);
-// //       } else {
-// //         callback(new Error("Not allowed by CORS"));
-// //       }
-// //     },
-// //     credentials: true,
-// //   })
-// // );
+app.use(corsMiddleware);
 
 app.use(express.json());
 
