@@ -10,7 +10,7 @@ const { errorLogger } = require("./middlewares/errorLogger");
 const { errors } = require("celebrate");
 const errorHandler = require("./middlewares/errorHandler");
 const auth = require("./middlewares/auth");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 mongoose
