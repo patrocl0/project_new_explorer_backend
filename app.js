@@ -7,6 +7,7 @@ const cors = require("cors");
 const { login, createUser } = require("./controllers/user");
 const usersRouter = require("./routes/users");
 const articleRouter = require("./routes/articles");
+const newsRouter = require("./routes/news");
 
 const { requestLogger } = require("./middlewares/requestLogger");
 const { errorLogger } = require("./middlewares/errorLogger");
@@ -47,6 +48,7 @@ app.get("/crash-test", () => {
 });
 app.post("/signin", login);
 app.post("/signup", createUser);
+app.use("/news", newsRouter);
 
 app.use(auth);
 
