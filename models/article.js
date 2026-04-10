@@ -24,14 +24,6 @@ const articleSchema = new mongoose.Schema({
     required: true,
   },
 
-  urlToImage: {
-    type: String,
-    required: true,
-    validate: {
-      validator: (v) => urlRegex.test(v),
-      message: "El enlace de la noticia no valido",
-    },
-  },
   image: {
     type: String,
     required: true,
