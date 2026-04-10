@@ -11,8 +11,6 @@ module.exports.createArticle = (req, res, next) => {
 
   const owner = req.user._id;
 
-  console.log(req.body);
-
   Article.create({
     keyword,
     title,
